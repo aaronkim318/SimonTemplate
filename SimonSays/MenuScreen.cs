@@ -6,11 +6,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SimonSays
 {
     public partial class MenuScreen : UserControl
     {
+        SoundPlayer homerSinging = new SoundPlayer(Properties.Resources.dah_dah_hey);
         public MenuScreen()
         {
             InitializeComponent();
@@ -30,6 +32,10 @@ namespace SimonSays
 
             f.Controls.Add(gs);
             gs.Focus();
+
+            homerSinging.Play();
+            Refresh();
+
         }
 
 
@@ -38,5 +44,7 @@ namespace SimonSays
             //TODO: end the application
             Application.Exit();
         }
+
+
     }
 }

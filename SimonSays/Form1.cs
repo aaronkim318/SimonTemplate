@@ -37,5 +37,25 @@ namespace SimonSays
             mm.Focus();
 
         }
+        public static void ChangeScreen(object sender, UserControl next)
+        {
+            Form f;
+            if (sender is Form)
+            {
+                f = (Form)sender; //f is sender
+            }
+            else
+            {
+                UserControl current = (UserControl)sender;//create Usercontrol from sender
+                f = current.FindForm(); //Find form usercontrol is on
+                f.Controls.Remove(current); //removes Usercontrol
+            }
+
+            next.Location = new Point((f.ClientSize.Width - next.Width) / 2,
+                (f.ClientSize.Height - next.Height) / 2);
+
+            f.Controls.Add(next);
+            next.Focus();
+        }
     }
 }

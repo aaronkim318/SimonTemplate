@@ -35,7 +35,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
             this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.exitButton.FlatAppearance.BorderSize = 0;
             this.exitButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
@@ -43,17 +43,17 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(16, 51);
+            this.exitButton.Location = new System.Drawing.Point(31, 72);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(84, 32);
+            this.exitButton.Size = new System.Drawing.Size(152, 32);
             this.exitButton.TabIndex = 19;
-            this.exitButton.Text = "Exit";
+            this.exitButton.Text = "Leave to get Donuts";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // newButton
             // 
-            this.newButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.newButton.BackColor = System.Drawing.Color.Transparent;
             this.newButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.newButton.FlatAppearance.BorderSize = 0;
             this.newButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
@@ -61,15 +61,15 @@
             this.newButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newButton.ForeColor = System.Drawing.Color.White;
-            this.newButton.Location = new System.Drawing.Point(16, 13);
+            this.newButton.Location = new System.Drawing.Point(31, 23);
             this.newButton.Name = "newButton";
-            this.newButton.Size = new System.Drawing.Size(84, 32);
+            this.newButton.Size = new System.Drawing.Size(173, 43);
             this.newButton.TabIndex = 18;
-            this.newButton.Text = "New Game";
+            this.newButton.Text = "Welcome to the Simpson Residence";
             this.newButton.UseVisualStyleBackColor = false;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
             // 
-            // MainScreen
+            // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,7 +79,7 @@
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.newButton);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "MainScreen";
+            this.Name = "MenuScreen";
             this.Size = new System.Drawing.Size(301, 300);
             this.ResumeLayout(false);
 

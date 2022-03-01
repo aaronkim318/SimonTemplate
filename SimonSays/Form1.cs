@@ -14,8 +14,10 @@ namespace SimonSays
 {
     public partial class Form1 : Form
     {
-        //TODO: create a List to store the pattern. Must be accessable on other screens
+        //made a list for storing input values, a list for colors, a list for sound and a random number generator
         public static List<int> stored = new List<int>();
+        public static List<SoundPlayer> sound = new List<SoundPlayer>();
+        public static List<Color> colors = new List<Color>();
         public static Random randGen = new Random();
         public Form1()
         {
@@ -24,17 +26,13 @@ namespace SimonSays
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //TODO: Launch MenuScreen
-            Form f = this.FindForm();
-            f.Controls.Remove(f);
+            ///change add menuscreen to Form1
+            ChangeScreen(this, new MenuScreen());
 
-            MenuScreen mm = new MenuScreen();
-
-            this.Location = new Point((f.ClientSize.Width - mm.Width) / 2,
-                (f.ClientSize.Height - mm.Height) / 2);
-
-            f.Controls.Add(mm);
-            mm.Focus();
+            //adds the sounds to the list right when form1 starts
+            Sounds();
+            //adds the colors to the list right when form1 starts
+            Colours();
 
         }
         public static void ChangeScreen(object sender, UserControl next)
@@ -56,6 +54,27 @@ namespace SimonSays
 
             f.Controls.Add(next);
             next.Focus();
+        }
+        public void Sounds()
+        {
+            //adds all the sounds to the sound player list
+            sound.Add(new SoundPlayer(Properties.Resources.dammit));
+            sound.Add(new SoundPlayer(Properties.Resources.boring));
+            sound.Add(new SoundPlayer(Properties.Resources.burp));
+            sound.Add(new SoundPlayer(Properties.Resources.doh1_y));
+            sound.Add(new SoundPlayer(Properties.Resources.darn_tootin));
+        }
+        public void Colours()
+        {
+            //adds all the colours to a colors list
+            colors.Add(Color.LightGreen);
+            colors.Add(Color.ForestGreen);
+            colors.Add(Color.Red);
+            colors.Add(Color.DarkRed);
+            colors.Add(Color.Yellow);
+            colors.Add(Color.Goldenrod);
+            colors.Add(Color.Blue);
+            colors.Add(Color.DarkBlue);
         }
     }
 }

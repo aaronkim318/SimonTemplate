@@ -15,15 +15,9 @@ namespace SimonSays
     public partial class GameScreen : UserControl
     {
 
-        //TODO: create guess variable to track what part of the pattern the user is at
+        //made to variables, a values variable to store the random numbers, and a guess vairable to store the players guesses
         int values = 0;
         public static int guess;
-        SoundPlayer homerDarnTootin = new SoundPlayer(Properties.Resources.darn_tootin);
-        SoundPlayer homerDoh = new SoundPlayer(Properties.Resources.doh1_y);
-        SoundPlayer homerDammit= new SoundPlayer(Properties.Resources.dammit);
-        SoundPlayer homerBurp = new SoundPlayer(Properties.Resources.burp);
-        SoundPlayer homerSinging= new SoundPlayer(Properties.Resources.dah_dah_hey);
-        SoundPlayer homerBoring = new SoundPlayer(Properties.Resources.boring);
         public GameScreen()
         {
             InitializeComponent();
@@ -31,10 +25,10 @@ namespace SimonSays
 
         private void GameScreen_Load(object sender, EventArgs e)
         {
-            //TODO: clear the pattern list from form1, refresh, pause for a bit, and run ComputerTurn()
+            //clears the stored list and waits for half a second before runnig the computer turn
             Form1.stored.Clear();
             Refresh();
-            Thread.Sleep(200);
+            Thread.Sleep(500);
             ComputerTurn();
         }
 
@@ -50,169 +44,158 @@ namespace SimonSays
             {
                 if (Form1.stored[i] == 0)
                 {
-                    greenButton.BackColor = Color.LightGreen;
+                    greenButton.BackColor = Form1.colors[0];//lights up the green button
+                    Form1.sound[2].Play();//plays a sound 
                     Refresh();
-                    homerBurp.Play();
-                   
-                    Thread.Sleep(500);
-                    greenButton.BackColor = Color.ForestGreen;
+                    Thread.Sleep(800);//waits 0.8 seconds
+                    greenButton.BackColor = Form1.colors[1];//darkens the green button
                     Refresh();
-                    Thread.Sleep(200);
+                    Thread.Sleep(800);//wait another 0.8 seconds
                 }
-                else if (Form1.stored[i] == 1)
+
+                if (Form1.stored[i] == 1)
                 {
-                    redButton.BackColor = Color.Red;
-                    
-                    homerDarnTootin.Play();
+                    redButton.BackColor = Form1.colors[2];//lights up the red button
+                    Form1.sound[4].Play();//plays a sound
                     Refresh();
-                    Thread.Sleep(500);
-                    redButton.BackColor = Color.DarkRed;
+                    Thread.Sleep(800);//waits 0.8 seconds
+                    redButton.BackColor = Form1.colors[3];//darkens the red button
                     Refresh();
-                    Thread.Sleep(200);
+                    Thread.Sleep(800);//waits 0.8 seconds
+
                 }
-                else if (Form1.stored[i] == 2)
+
+                if (Form1.stored[i] == 2)
                 {
-                    yellowButton.BackColor = Color.Yellow;
-                    
-                    homerDoh.Play();
+                    yellowButton.BackColor = Form1.colors[4];//lights up the yellow button
+                    Form1.sound[3].Play();//plays a sound
                     Refresh();
-                    Thread.Sleep(500);
-                    yellowButton.BackColor = Color.Goldenrod;
+                    Thread.Sleep(800);//waits 0.8 seconds
+                    yellowButton.BackColor = Form1.colors[5];//darkens the yellow button
                     Refresh();
-                    Thread.Sleep(200);
+                    Thread.Sleep(800);//waits 0.8 seconds
+
                 }
-                else if (Form1.stored[i] == 3)
+
+                if (Form1.stored[i] == 3)
                 {
-                    blueButton.BackColor = Color.Blue;
-                   
-                    homerBoring.Play();
+                    blueButton.BackColor = Form1.colors[6];//lights up the bluee button
+                    Form1.sound[1].Play();//plays a sound
                     Refresh();
-                    Thread.Sleep(500);
-                    blueButton.BackColor = Color.DarkBlue;
+                    Thread.Sleep(800);//waits 0.8 seconds
+                    blueButton.BackColor = Form1.colors[7];//darkens the blue button
                     Refresh();
-                    Thread.Sleep(200);
+                    Thread.Sleep(800);//waits 0.8 seconds
+
                 }
 
             }
-            //TODO: get guess index value back to 0
+            //sets the guess index back to 0
             guess = 0;
         }
 
         public void GameOver()
         {
-            //TODO: Play a game over sound
-            homerDammit.Play();
-            //TODO: close this screen and open the GameOverScreen
+            //plays a sound when the game is finished
+            Form1.sound[0].Play();
+            //closes the game screen and adds the gameover screen
             Form1.ChangeScreen(this, new GameOverScreen());
         }
 
         //TODO: create one of these event methods for each button
         private void greenButton_Click(object sender, EventArgs e)
         {
-            //TODO: is the value at current guess index equal to a green. If so:
-            // light up button, play sound, and pause
-            // set button colour back to original
-            // add one to the guess index
-            // check to see if we are at the end of the pattern. If so:
-            // call ComputerTurn() method
-            // else call GameOver method
-
             if (Form1.stored[guess] == 0)
             {
-                greenButton.BackColor = Color.LightGreen;
-               
-                homerBurp.Play();
+                //checks to see if the guess was the green button
+                greenButton.BackColor = Form1.colors[0];//lights up the green button
+                Form1.sound[2].Play();//plays a sound 
                 Refresh();
-                Thread.Sleep(500);
-                greenButton.BackColor = Color.ForestGreen;
+                Thread.Sleep(800);//waits 0.8 seconds
+                greenButton.BackColor = Form1.colors[1];//darkens the green button
                 Refresh();
-                Thread.Sleep(200);
-                guess++;
+                Thread.Sleep(800);//wait another 0.8 seconds
+                guess++;//adds one to the guess
             }
             else
             {
-                GameOver();
+                GameOver();//goes to the game over screen
             }
-
             if (Form1.stored.Count() == guess)
             {
-                ComputerTurn();
+                ComputerTurn();//runs the computers turn again
             }
         }
 
         private void redButton_Click(object sender, EventArgs e)
         {
-
+            //check to see if the guess was the red button
             if (Form1.stored[guess] == 1)
             {
-                redButton.BackColor = Color.Red;
-                
-                homerDarnTootin.Play();
+                redButton.BackColor = Form1.colors[2];//lights up the red button
+                Form1.sound[4].Play();//plays a sound
                 Refresh();
-                Thread.Sleep(500);
-                redButton.BackColor = Color.DarkRed;
+                Thread.Sleep(800);//waits 0.8 seconds
+                redButton.BackColor = Form1.colors[3];//darkens the red button
                 Refresh();
-                Thread.Sleep(200);
-                guess++;
+                Thread.Sleep(800);//waits 0.8 seconds
+                guess++;//adds one to the guess
             }
             else
             {
-                GameOver();
+                GameOver();//goes to the game over screen
             }
             if (Form1.stored.Count() == guess)
             {
-                ComputerTurn();
+                ComputerTurn();//runs the computers turn again
             }
-
         }
 
         private void yellowButton_Click(object sender, EventArgs e)
         {
-
+            //checks to see if the guess is the yellow button
             if (Form1.stored[guess] == 2)
             {
-                yellowButton.BackColor = Color.Yellow;
-               
-                homerDoh.Play();
+                yellowButton.BackColor = Form1.colors[4];//lights up the yellow button
+                Form1.sound[3].Play();//plays a sound
                 Refresh();
-                Thread.Sleep(500);
-                yellowButton.BackColor = Color.Goldenrod;
+                Thread.Sleep(800);//waits 0.8 seconds
+                yellowButton.BackColor = Form1.colors[5];//darkens the yellow button
                 Refresh();
-                Thread.Sleep(200);
-                guess++;
+                Thread.Sleep(800);//waits 0.8 seconds
+                guess++;//adds one to the guess
             }
             else
             {
-                GameOver();
+                GameOver();//goes to the game over screen
             }
             if (Form1.stored.Count() == guess)
             {
-                ComputerTurn();
+                ComputerTurn();//runs the computers turn again
             }
         }
 
         private void blueButton_Click(object sender, EventArgs e)
         {
-
+            //checks to see if the guess is the blue button
             if (Form1.stored[guess] == 3)
             {
-                blueButton.BackColor = Color.Blue;
-                
-                homerBoring.Play();
+                blueButton.BackColor = Form1.colors[6];//lights up the bluee button
+                Form1.sound[1].Play();//plays a sound
                 Refresh();
-                Thread.Sleep(500);
-                blueButton.BackColor = Color.DarkBlue;
+                Thread.Sleep(800);//waits 0.8 seconds
+                blueButton.BackColor = Form1.colors[7];//darkens the blue button
                 Refresh();
-                Thread.Sleep(200);
-                guess++;
+                Thread.Sleep(800);//waits 0.8 seconds
+                guess++;//adds one to the guess
             }
             else
             {
-                GameOver();
+                GameOver();//goes to the game over screen
             }
             if (Form1.stored.Count() == guess)
             {
-                ComputerTurn();
+                ComputerTurn();//runs the computers turn again
             }
         }
     }

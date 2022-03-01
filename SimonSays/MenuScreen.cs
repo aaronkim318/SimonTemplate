@@ -12,7 +12,7 @@ namespace SimonSays
 {
     public partial class MenuScreen : UserControl
     {
-        SoundPlayer homerSinging = new SoundPlayer(Properties.Resources.dah_dah_hey);
+       
         public MenuScreen()
         {
             InitializeComponent();
@@ -20,28 +20,15 @@ namespace SimonSays
 
         private void newButton_Click(object sender, EventArgs e)
         {
-            //TODO: remove this screen and start the GameScreen
-            Form f = this.FindForm();
-            f.Controls.Remove(this);
-
-            //creates a new variable to find the size of the gamescreen
-            GameScreen gs = new GameScreen();
-
-            this.Location = new Point((f.ClientSize.Width - gs.Width) / 2,
-                (f.ClientSize.Height - gs.Height) / 2);
-
-            f.Controls.Add(gs);
-            gs.Focus();
-
-            homerSinging.Play();
+            //deletes the menuscreeen and adds the game screen to form1
+            Form1.ChangeScreen(this, new GameScreen());
             Refresh();
-
         }
 
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            //TODO: end the application
+            //closes the application
             Application.Exit();
         }
 

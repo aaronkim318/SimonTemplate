@@ -18,14 +18,14 @@ namespace SimonSays
 
         private void GameOverScreen_Load(object sender, EventArgs e)
         {
-            //TODO: show the length of the pattern
+            //displayed the amount of score 
             lengthLabel.Text = $"{Form1.stored.Count}";
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            //TODO: close this screen and open the MenuScreen
-            Application.Exit();
+            //goes back to the menu screen to either play again or close
+            Form1.ChangeScreen(this, new MenuScreen());
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿///Created By Aaron KIm
+///February - March 2022
+///to demonstrate a SimonSays Gamex 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
